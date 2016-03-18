@@ -1,18 +1,32 @@
-Cell[] cells;
 
-int x_cell_count, y_cell_count;
+// initialize variables
+
+Cell[] cells;
+int x_cell_count;
+int y_cell_count;
 int count;
-int size = 25;
-float decay = .9;
-int x_center1, y_center1;
-int x_center2, y_center2;
-int margin = 25;
-boolean run = true;
-int key = 0;
+int size;
+int x_center1;
+int y_center1;
+int x_center2;
+int y_center2;
+int margin;
+float decay;
+boolean run;
+
+
+
 
 void setup() {
-  size(500, 500);
-frameRate(12);
+
+  // config
+  run = true;
+  size = 25;
+  decay = .9; 
+  margin = 25;
+  size(700, 900);
+  
+  // initialize 
   x_cell_count = (width - (margin*2))/size;
   y_cell_count = (height -(margin*2))/size;
   count = x_cell_count * y_cell_count;
@@ -34,7 +48,7 @@ class Cell {
 
   int r, g, b, a;
   int index, row, col;
-  
+
   String status = "off";
 
   Cell(int row, int col, int index) {
@@ -87,11 +101,11 @@ void grid(boolean state) {
       stroke(255);
       noFill();
       rect(c.x, c.y, size, size);
-      if((c.y/size) == 1){
-      text((c.x/size)-1,c.x+5,c.y-10);
+      if ((c.y/size) == 1) {
+        text((c.x/size)-1, c.x+5, c.y-10);
       }
-      if((c.x/size) == 1){
-      text((c.y/size)-1,c.x-20,c.y+20);
+      if ((c.x/size) == 1) {
+        text((c.y/size)-1, c.x-20, c.y+20);
       }
     } else {
       noStroke();
@@ -105,26 +119,25 @@ void grid(boolean state) {
 void keyPressed() {
   if (keyCode == 32) {
     ani_1();    
-println("run");
+    println("run");
   }
 }
-  
+
 
 void draw() {
   background(0, 0, 0);
   grid(true);
 
   int x1, x2, y1, y2;
-  
+
   for (Cell c : cells) {
-  } 
+  }
 }
 
-void ani_1(){
-    background(0, 0, 0);
-    cells[getIndex(5,5)].on();
-    cells[getIndex(6,5)].on();
-    cells[getIndex(5,5)].off();
-    cells[getIndex(6,6)].on();
-  
+void ani_1() {
+  background(0, 0, 0);
+  cells[getIndex(5, 5)].on();
+  cells[getIndex(6, 5)].on();
+  cells[getIndex(5, 5)].off();
+  cells[getIndex(6, 6)].on();
 }
