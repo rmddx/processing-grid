@@ -15,17 +15,15 @@ float decay;
 boolean run;
 
 
-
-
 void setup() {
 
   // config
+  size(400, 400);
   run = true;
   size = 25;
   decay = .9; 
   margin = 25;
-  size(700, 900);
-  
+
   // initialize 
   x_cell_count = (width - (margin*2))/size;
   y_cell_count = (height -(margin*2))/size;
@@ -39,10 +37,6 @@ void setup() {
     }
   }
 }
-
-
-
-
 
 // methods 
 
@@ -83,10 +77,10 @@ void draw() {
   background(0, 0, 0);
   grid(true);
 
-  int x1, x2, y1, y2;
+  //int x1, x2, y1, y2;
 
-  for (Cell c : cells) {
-  }
+  //for (Cell c : cells) {
+  //}
 }
 
 void ani_1() {

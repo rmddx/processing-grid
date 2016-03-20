@@ -6,8 +6,6 @@ class Cell {
   int r, g, b, a;
   int index, row, col;
 
-  String status = "off";
-
   Cell(int row, int col, int index) {
     r = 255;
     g = 255;
@@ -24,7 +22,6 @@ class Cell {
     a = 255;
     fill(r, g, b, a);
     rect(x, y, size, size);
-    status = "on";
     println(x, y, r, g, b, a);
   }
 
@@ -36,9 +33,6 @@ class Cell {
   void update() {
     a = int(a * decay);
 
-    if (a <= 1) {
-      status = "off";
-    }
     fill(r, g, b, a);   
     rect(x, y, size, size);
   }
