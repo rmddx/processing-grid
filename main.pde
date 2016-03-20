@@ -14,11 +14,14 @@ int margin;
 float decay;
 boolean run;
 
+void settings(){
+  size(400, 400);
+  smooth(0);
+}
 
 void setup() {
 
   // config
-  size(400, 400);
   run = true;
   size = 25;
   decay = .9; 
