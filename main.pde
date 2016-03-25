@@ -1,10 +1,7 @@
 
 // initialize variables
 
-Cell[] cells;
-int x_cell_count;
-int y_cell_count;
-int count;
+
 int size;
 int x_center1;
 int y_center1;
@@ -13,42 +10,37 @@ int y_center2;
 int margin;
 float decay;
 boolean run;
+Grid grid;
 
 void settings(){
   size(400, 400);
   smooth(0);
 }
 
-void setup() {
-
-  // config
+void config(){
   run = true;
   size = 25;
   decay = .9; 
   margin = 25;
+}
+
+void setup() {
+  config();
 
   // initialize 
-  x_cell_count = (width - (margin*2))/size;
-  y_cell_count = (height -(margin*2))/size;
-  count = x_cell_count * y_cell_count;
-  cells = new Cell[x_cell_count * y_cell_count];
+  grid = new Grid();
 
-  int index = 0;
-  for (int r = 0; r < y_cell_count; r++) {
-    for (int c = 0; c < x_cell_count; c++) {
-      cells[index++] = new Cell(r, c, index);
-    }
-  }
 }
+
 
 // methods 
 
 int getIndex(int r, int c) {
-  return (r * x_cell_count) + c;
+  return (r * grid.x_cell_count) + c;
 }
 
 void grid(boolean state) {
-  for (Cell c : cells) {
+  for (Cell c : grid.cells) {
     if (state == true) {
       stroke(255);
       noFill();
@@ -88,8 +80,8 @@ void draw() {
 
 void ani_1() {
   background(0, 0, 0);
-  cells[getIndex(5, 5)].on();
-  cells[getIndex(6, 5)].on();
-  cells[getIndex(5, 5)].off();
-  cells[getIndex(6, 6)].on();
+  grid.cells[getIndex(5, 5)].on();
+  grid.cells[getIndex(6, 5)].on();
+  grid.cells[getIndex(5, 5)].off();
+  grid.cells[getIndex(6, 6)].on();
 }
