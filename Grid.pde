@@ -1,12 +1,16 @@
-class Grid{
+class Grid {
+
   Cell[] cells;
 
   int x_cell_count;
   int y_cell_count;
   int count;
-  
-  Grid() {
 
+  Grid() {
+    build();
+  }
+
+  void build() {
     x_cell_count = (width - (margin*2))/size;
     y_cell_count = (height -(margin*2))/size;
     count = x_cell_count * y_cell_count;
@@ -17,10 +21,29 @@ class Grid{
       for (int c = 0; c < x_cell_count; c++) {
         cells[index++] = new Cell(r, c, index);
       }
-    } 
-    
-    // end
+    }
   }
-  
-  
+
+  void lines() {
+    for (Cell c : cells) {
+      stroke(255);
+      noFill();
+    }
+  } 
+
+  void coordinates() {
+    for (Cell c : cells) {
+      rect(c.x, c.y, size, size);
+      if ((c.y/size) == 1) {
+        text((c.x/size)-1, c.x+5, c.y-10);
+      }
+      if ((c.x/size) == 1) {
+        text((c.y/size)-1, c.x-20, c.y+20);
+      }
+    }
+  }
+
+  int getIndex(int r, int c) {
+    return (r * x_cell_count) + c;
+  }
 }
