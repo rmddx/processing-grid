@@ -19,21 +19,13 @@ class Cell {
   }
 
   void on() {
-    a = 255;
     fill(r, g, b, a);
-    rect(x, y, size, size);
-    println(x, y, r, g, b, a);
+    rect(this.x, this.y, size, size);
+    noFill();
   }
 
   void off() {
     noFill();
-    rect(x, y, size, size);
-  }
-
-  void update() {
-    a = int(a * decay);
-
-    fill(r, g, b, a);   
-    rect(x, y, size, size);
+    rect(this.x, this.y, size, size);
   }
 }

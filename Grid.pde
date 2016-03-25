@@ -43,6 +43,12 @@ class Grid {
     }
   }
 
+  void update() {
+    for (Cell c : cells) {
+      // update
+    }
+  }
+
   int getIndex(int r, int c) {
     return (r * x_cell_count) + c;
   }
